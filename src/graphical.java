@@ -4,6 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class graphical {
     @Test
@@ -43,7 +46,6 @@ public class graphical {
         scrollPane1.setBounds(30, 130, 140, 400);
         scrollPane1.setViewportView(output1);
         f.add(scrollPane1);
-        output1.append();
 
         JLabel a2 = new JLabel("请输入你的答案:");
         a2.setFont(new Font("宋体", Font.PLAIN, 15));
@@ -79,18 +81,61 @@ public class graphical {
                 String number=Field1.getText();
                 int i = Integer.parseInt(number);
                 new out().Process(i);
+                TxtUil pao=new TxtUil();
+                String str=pao.readTxt("D:\\java\\算数题目\\Exercises.txt");
+                output1.append(str);
             }
         });
         f.add(searchButton1);
 
         JButton searchButton2 =b2;
-        searchButton1.addActionListener(new ActionListener() {
+
+        searchButton2.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent arg0) {
                 //一行行输入答案
                 //一行行读取答案再跟正确答案对比
-                //然后输出到output2中
+                //然后输出到output2中=
+                ArrayList<String> ans=new ArrayList<String>();
+                TxtUil re=new TxtUil();
+                String read=re.readTxt("D:\\java\\算数题目\\Answers.txt");
+                for (int i=0;i<read.split("\n").length;i++){
+                    ans.add(read.split("\n")[i]);//读文件
+                }
+                String a=answer.getText();
+                String[] arrs=a.split("\n");
+                //System.out.println(arrs.length+"           "+ans.size());
+                String cor="",wro="";
+                for (int j=0;j<(arrs.length>ans.size()?ans.size():arrs.length);j++){
+                    //System.out.println(ans.get(j).split("、")[1]+"\t"+arrs[j]);
+                    System.out.println(arrs[j]+"  "+ans.get(j).split("、")[1]);
+                    if (arrs[j].equals(ans.get(j).split("、")[1])){
+                        cor+=String.valueOf(j+1)+",";
+                    }
+                    else {
+                        wro+=String.valueOf(j+1)+",";
+                    }
+                }
+                if (cor.equals("")){
+                    wro=wro.substring(0,wro.length()-1);
+                    output2.append("Correct:0"+"("+cor+")"+"\n");
+                    output2.append("Wrong:"+wro.split(",").length+"("+wro+")");/**/
+                }
+                else if (wro.equals("")){
+                    cor=cor.substring(0,cor.length()-1);
+                    output2.append("Correct:"+cor.split(",").length+"("+cor+")"+"\n");
+                    output2.append("Wrong:0"+"("+wro+")"+"\n");
+                }
+                else {
+                    System.out.println(2);
+                    cor=cor.substring(0,cor.length()-1);
+                    wro=wro.substring(0,wro.length()-1);
+                    output2.append("Correct:"+cor.split(",").length+"("+cor+")"+"\n");
+                    output2.append("Wrong:"+wro.split(",").length+"("+wro+")");/**/
+                }
             }
         });
+
+
         f.add(searchButton2);
         f.setVisible(true);
     }

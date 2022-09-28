@@ -1,6 +1,8 @@
+import org.junit.Test;
+
 import java.io.*;
 
-public class Txt {
+public class TxtUil {
     public static String readTxt(String txtPath){
         String str = "";
         String strLine;
@@ -44,5 +46,10 @@ public class Txt {
             e.printStackTrace();
         }
     }
-
+    @Test
+    public void test(){
+        TxtUil.clear("D:\\java\\算数题目\\Exercises.txt");
+        TxtUil.clear("D:\\java\\算数题目\\Answers.txt");
+        TxtUil.clear("D:\\java\\算数题目\\Grade.txt");
+    }
 }

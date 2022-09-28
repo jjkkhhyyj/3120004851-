@@ -78,19 +78,19 @@ public class out {
                 } catch (ScriptException e) {
                     e.printStackTrace();
                 }
-                try {
+                /*try {
                     System.out.println(str+" = "+v1.swap(js.eval(process).toString()));//输出
                 } catch (ScriptException e) {
                     e.printStackTrace();
-                }/*/**/
+                }/**/
             }
         }
-        Txt.clear("D:\\java\\算数题目\\Exercises.txt");
-        Txt.clear("D:\\java\\算数题目\\Answers.txt");
-        Txt.clear("D:\\java\\算数题目\\Grade.txt");
+        TxtUil.clear("D:\\java\\算数题目\\Exercises.txt");
+        TxtUil.clear("D:\\java\\算数题目\\Answers.txt");
+        TxtUil.clear("D:\\java\\算数题目\\Grade.txt");
         for (int y=0;y<ans.size();y++){
-            Txt.writeTxt(y+1+"、"+ques.get(y),"D:\\java\\算数题目\\Exercises.txt");
-            Txt.writeTxt(y+1+"、"+ans.get(y),"D:\\java\\算数题目\\Answers.txt");
+            TxtUil.writeTxt(y+1+"、"+ques.get(y),"D:\\java\\算数题目\\Exercises.txt");
+            TxtUil.writeTxt(y+1+"、"+ans.get(y),"D:\\java\\算数题目\\Answers.txt");
         }
     }
 }
