@@ -30,8 +30,17 @@ public class graphical {
         Field1.setBounds(160, 10, 80, 30);
         f.add(Field1);
 
+        JLabel a4 = new JLabel("请输入数字范围:");
+        a4.setFont(new Font("宋体", Font.PLAIN, 15));
+        a4.setBounds(30, 50, 120, 30);
+        f.add(a4);
+
+        JTextField Field2 = new JTextField();
+        Field2.setBounds(160, 50, 80, 30);
+        f.add(Field2);
+
         JButton b1=new JButton("确定");
-        b1.setBounds(260,10,80, 30);
+        b1.setBounds(260,50,80, 30);
         f.add(b1);
 
         JLabel a0 = new JLabel("题目:");
@@ -79,8 +88,10 @@ public class graphical {
             public void actionPerformed(ActionEvent arg0) {
                 output1.setText("");
                 String number=Field1.getText();
+                String size=Field2.getText();
                 int i = Integer.parseInt(number);
-                new out().Process(i);
+                int y=Integer.parseInt(size);
+                new out().Process(i,y);
                 TxtUil pao=new TxtUil();
                 String str=pao.readTxt("D:\\java\\算数题目\\Exercises.txt");
                 output1.append(str);
@@ -106,8 +117,6 @@ public class graphical {
                 //System.out.println(arrs.length+"           "+ans.size());
                 String cor="",wro="";
                 for (int j=0;j<(arrs.length>ans.size()?ans.size():arrs.length);j++){
-                    //System.out.println(ans.get(j).split("、")[1]+"\t"+arrs[j]);
-                    System.out.println(arrs[j]+"  "+ans.get(j).split("、")[1]);
                     if (arrs[j].equals(ans.get(j).split("、")[1])){
                         cor+=String.valueOf(j+1)+",";
                     }
@@ -119,16 +128,22 @@ public class graphical {
                     wro=wro.substring(0,wro.length()-1);
                     output2.append("Correct:0"+"("+cor+")"+"\n");
                     output2.append("Wrong:"+wro.split(",").length+"("+wro+")");/**/
+                    TxtUil.writeTxt("Correct:0"+"("+cor+")"+"\n","D:\\java\\算数题目\\Grade.txt");
+                    TxtUil.writeTxt("Wrong:"+wro.split(",").length+"("+wro+")","D:\\java\\算数题目\\Grade.txt");
                 }
                 else if (wro.equals("")){
                     cor=cor.substring(0,cor.length()-1);
                     output2.append("Correct:"+cor.split(",").length+"("+cor+")"+"\n");
                     output2.append("Wrong:0"+"("+wro+")"+"\n");
+                    TxtUil.writeTxt("Correct:"+cor.split(",").length+"("+cor+")"+"\n","D:\\java\\算数题目\\Grade.txt");
+                    TxtUil.writeTxt("Wrong:0"+"("+wro+")"+"\n","D:\\java\\算数题目\\Grade.txt");
                 }
                 else {
                     System.out.println(2);
                     cor=cor.substring(0,cor.length()-1);
                     wro=wro.substring(0,wro.length()-1);
+                    TxtUil.writeTxt("Correct:"+cor.split(",").length+"("+cor+")"+"\n","D:\\java\\算数题目\\Grade.txt");
+                    TxtUil.writeTxt("Wrong:"+wro.split(",").length+"("+wro+")","D:\\java\\算数题目\\Grade.txt");
                     output2.append("Correct:"+cor.split(",").length+"("+cor+")"+"\n");
                     output2.append("Wrong:"+wro.split(",").length+"("+wro+")");/**/
                 }

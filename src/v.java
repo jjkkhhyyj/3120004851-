@@ -6,7 +6,7 @@ import java.util.List;
 
 public class v{
     static ScriptEngine js = new ScriptEngineManager().getEngineByName("JavaScript");
-    public boolean check(String arr[]) {//先判断乘除
+    public boolean check(String arr[]) {
         List<String> op=new ArrayList<>();
         List<String> num=new ArrayList<>();//" × "," ÷ "
         for (int i = 0 ;i < arr.length; i+=2){

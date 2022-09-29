@@ -12,10 +12,8 @@ public class out {
     private int a, b;
     private String operator[]={" + "," - "," × "," ÷ ","|"};//加空格
     static ScriptEngine js = new ScriptEngineManager().getEngineByName("JavaScript");
-    public void Process(int num) {
-
+    public void Process(int num,int size) {
         Scanner sc=new Scanner(System.in);
-        int size=50;
         ArrayList<String> ques= new ArrayList<String>();
         ArrayList<String> ans= new ArrayList<String>();
         for (int x=0;x<num;x++){
